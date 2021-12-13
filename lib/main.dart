@@ -6,9 +6,25 @@ void main() {
 }
 
 class MusicPlay extends StatelessWidget {
-  void audioPlayers(int audioPlayNumber) {
+  void audioPalyerSerial(int audioPlayNumber) {
     final player = AudioCache();
     player.play('note$audioPlayNumber.wav');
+  }
+
+  Widget PlayerBuilder({required Color color, required int inputPlayerNumber}) {
+    return Expanded(
+      child: FlatButton(
+          color: color,
+          child: Text(
+            'Click Here',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+          onPressed: () {
+            audioPalyerSerial(inputPlayerNumber);
+          }),
+    );
   }
 
   @override
@@ -20,62 +36,13 @@ class MusicPlay extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                FlatButton(
-                  height: 80,
-                  color: Colors.red,
-                  onPressed: () {
-                    audioPlayers(1);
-                  },
-                  child: Text('Click Me'),
-                ),
-                FlatButton(
-                  height: 80,
-                  color: Colors.orange,
-                  onPressed: () {
-                    audioPlayers(2);
-                  },
-                  child: Text('Click Me'),
-                ),
-                FlatButton(
-                  height: 80,
-                  color: Colors.teal,
-                  onPressed: () {
-                    audioPlayers(3);
-                  },
-                  child: Text('Click Me'),
-                ),
-                FlatButton(
-                  height: 80,
-                  color: Colors.pink,
-                  onPressed: () {
-                    audioPlayers(4);
-                  },
-                  child: Text('Click Me'),
-                ),
-                FlatButton(
-                  height: 80,
-                  color: Colors.purple,
-                  onPressed: () {
-                    audioPlayers(5);
-                  },
-                  child: Text('Click Me'),
-                ),
-                FlatButton(
-                  height: 80,
-                  color: Colors.blue,
-                  onPressed: () {
-                    audioPlayers(6);
-                  },
-                  child: Text('Click Me'),
-                ),
-                FlatButton(
-                  height: 80,
-                  color: Colors.green,
-                  onPressed: () {
-                    audioPlayers(7);
-                  },
-                  child: Text('Click Me'),
-                ),
+                PlayerBuilder(color: Colors.red, inputPlayerNumber: 1),
+                PlayerBuilder(color: Colors.blue, inputPlayerNumber: 2),
+                PlayerBuilder(color: Colors.pink, inputPlayerNumber: 3),
+                PlayerBuilder(color: Colors.purple, inputPlayerNumber: 4),
+                PlayerBuilder(color: Colors.teal, inputPlayerNumber: 5),
+                PlayerBuilder(color: Colors.green, inputPlayerNumber: 6),
+                PlayerBuilder(color: Colors.orange, inputPlayerNumber: 7),
               ],
             ),
           ),
